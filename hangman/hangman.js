@@ -10,8 +10,14 @@ const Hangman = function(word, remainingGuesses) {
 }
 
 Hangman.prototype.calculateStatus = function () {
+   const finished = this.word.every((letter) => this.guessedLetters.includes(letter))
+
     if (this.remainingGuesses === 0) {
         this.status = 'failed'
+    } else if (finished) {
+        this.status = 'finished'
+    } else {
+        this.status = 'playing'
     }
 }
 
