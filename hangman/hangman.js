@@ -7,7 +7,7 @@ class Hangman {
     }
 
     calculateStatus() {
-        const finished = this.word.every((letter) => this.guessedLetters.includes(letter))
+        const finished = this.word.every((letter) => this.guessedLetters.includes(letter) || letter === ' ')
 
         if (this.remainingGuesses === 0) {
             this.status = 'failed'
@@ -18,17 +18,17 @@ class Hangman {
         }
     }
 
-    getStatusMessage() {
+    get statusMessage() {
         if (this.status === 'playing') {
             return `Guesses left: ${this.remainingGuesses}`
         } else if (this.status === 'failed') {
             return `NIce try! The word was "${this.word.join('')}".`
         } else {
-            return 'Great work! You guessed the work.'
+            return 'Great work! You guessed the word.'
         }
     }
 
-    getPuzzle() {
+    get puzzle() {
         let puzzle = ''
 
         this.word.forEach((letter) => {

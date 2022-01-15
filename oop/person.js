@@ -46,6 +46,7 @@ class Student extends Person {
     }    
     getBio() {
         const status = this.grade >= 70 ? 'Passing' : 'Failing'
+        return `${this.firstName} is ${status} the class.`
     }
 }
 const me = new Student('Andrew', 'Mead', 27, 88, [])
